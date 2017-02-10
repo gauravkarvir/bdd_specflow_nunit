@@ -3,7 +3,7 @@
 ### Uses:  
 + SpecFlow 2 (Cucumber BDD)
 + Selenium (WebDriver)
-+ NUnit 2.x
++ NUnit 3.x
 + specflow-report-templates 
 + pickles (documentation generator for features and scenarios)
 + utilises Page Object Model pattern
