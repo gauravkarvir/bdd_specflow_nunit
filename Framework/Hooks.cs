@@ -59,7 +59,7 @@ namespace BDD_Specflow_Webdriver.Utils
         [BeforeFeature]
         public static void BeforeFeatureRun()
         {
-            if (host == "localhost")
+            if (host == "local")
             {
                 Console.Write("####### Feature : " + FeatureContext.Current.FeatureInfo.Title);
                
@@ -71,18 +71,20 @@ namespace BDD_Specflow_Webdriver.Utils
 
               else  if (testExecution == "firefox") // headlessrun is performed on deployment server.
                 {
-                    localDriver = new FirefoxDriver();
+                    FirefoxDriverService _firefoxDriverService = FirefoxDriverService.CreateDefaultService(@"C:\Projects\bdd-specflow-automation\packages\Selenium.Firefox.WebDriver.0.13.0\driver", "geckodriver.exe");
+                    localDriver = new FirefoxDriver(_firefoxDriverService);
+
                     FeatureContext.Current["driver"] = localDriver;
                 }
                 else if (testExecution == "internetExplorer") 
                 {
-                    localDriver = new InternetExplorerDriver();
+                    localDriver = new InternetExplorerDriver(@"C:\Projects\bdd-specflow-automation\packages\WebDriver.IEDriverServer.win32.3.0\content");
                     FeatureContext.Current["driver"] = localDriver;
                 }
 
-                else
+                else if (testExecution == "chrome")
                 {
-                    localDriver = new ChromeDriver(@"C:\\Users\\dasqa\\Source\\Repos\\Digital Apprenticeship Service\\webtests\\Sfa.Eds.Das.Web.AcceptanceTests\\Test\\Resources");
+                    localDriver = new ChromeDriver(@"C:\Projects\bdd-specflow-automation\packages\Selenium.WebDriver.ChromeDriver.2.27.0\driver");
                     FeatureContext.Current["driver"] = localDriver;
                 }
 
@@ -141,7 +143,7 @@ namespace BDD_Specflow_Webdriver.Utils
 
         public static void BeforeWebScenario()
         {
-            if (host == "localhost")
+            if (host == "local")
             {
 
                 ScenarioContext.Current["driver"] = localDriver;
@@ -165,7 +167,7 @@ namespace BDD_Specflow_Webdriver.Utils
         [AfterScenario]
         public static void AfterWebScenario()
         {
-            if (host == "localhost")
+            if (host == "local")
             {
 
                 if (ScenarioContext.Current.TestError != null)
@@ -183,7 +185,7 @@ namespace BDD_Specflow_Webdriver.Utils
         public static void AfterFeatureRun()
         {
 
-            if (host == "localhost")
+            if (host == "local")
             {
 
             // Console.Write("Feature Run-Ended #######################");

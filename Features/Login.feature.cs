@@ -18,9 +18,8 @@ namespace BDD_Specflow_Webdriver.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Navigate and Login to HomePage")]
-    [NUnit.Framework.CategoryAttribute("web")]
-    public partial class NavigateAndLoginToHomePageFeature
+    [NUnit.Framework.DescriptionAttribute("Navigate")]
+    public partial class NavigateFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -32,8 +31,7 @@ namespace BDD_Specflow_Webdriver.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Navigate and Login to HomePage", null, ProgrammingLanguage.CSharp, new string[] {
-                        "web"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Navigate", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -68,8 +66,8 @@ namespace BDD_Specflow_Webdriver.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Navigate and Login to Home Page")]
         [NUnit.Framework.CategoryAttribute("login")]
-        [NUnit.Framework.TestCaseAttribute("admin", new string[0])]
-        [NUnit.Framework.TestCaseAttribute("user", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("invalidAdmin", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("invalidUser", new string[0])]
         public virtual void NavigateAndLoginToHomePage(string userType, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -79,18 +77,12 @@ namespace BDD_Specflow_Webdriver.Features
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Navigate and Login to Home Page", @__tags);
-#line 6
-this.ScenarioSetup(scenarioInfo);
-#line 7
- testRunner.Given("I navigate to Login Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 8
- testRunner.When(string.Format("I enter login details for {0}", userType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 9
- testRunner.Then("the user is successfully logged on and is on the Home Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 10
- testRunner.When("the user logs off", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 11
- testRunner.Then("the user is successfully logged off", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I navigate to Login Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 12
+ testRunner.When(string.Format("I enter login details for {0}", userType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             this.ScenarioCleanup();
         }

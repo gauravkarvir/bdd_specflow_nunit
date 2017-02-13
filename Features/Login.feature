@@ -1,18 +1,23 @@
-﻿@web
-Feature: Navigate and Login to HomePage
+﻿Feature: Navigate
+#This is a sample Feature file with an example of a single scenario.
+#Every feature file starts with "Feature:" Keyword which describes what Feature is under test.
+#tags are used for running entire Feature, a single Scenario or group of Feature or Scenarios.
+#Tags are annotated with "@" symbol
+
  
 
 @login
 Scenario Outline: Navigate and Login to Home Page
 	Given I navigate to Login Page
 	When I enter login details for <userType>
-	Then the user is successfully logged on and is on the Home Page
-	When the user logs off
-	Then the user is successfully logged off
+    #Then i can see the validation error message
+
 	Examples:
-	| userType                                                |
-	| admin                                             |
-	| user                                             |
+	| userType |
+	| invalidAdmin    |
+	| invalidUser     |
 
 	
 	
+
+
