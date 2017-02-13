@@ -83,6 +83,8 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Given("I navigate to Login Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 12
  testRunner.When(string.Format("I enter login details for {0}", userType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 13
+    testRunner.Then("i can see the validation error message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

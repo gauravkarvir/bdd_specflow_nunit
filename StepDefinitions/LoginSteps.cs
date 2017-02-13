@@ -32,11 +32,19 @@ namespace BDD_Specflow_Webdriver.Step_Definitions
             loginPage.Submit();
         }
 
+        [Then(@"i can see the validation error message")]
+        public void ThenICanSeeTheValidationErrorMessage()
+        {
+            var invalidUserMessage = "Either username or password entered is incorrect. Please check your details and try again";
+            Assert.That(loginPage.FailureMessagePresent().Contains(invalidUserMessage));
+        }
+
+
 
         [Then(@"the user is successfully logged off")]
         public void ThenTheUserIsSuccessfullyLoggedOff()
         {
-            var logOffMessage = "You have successfully logged off";
+            var logOffMessage = "Either username or password entered is incorrect. Please check your details and try again. If you are trying to login to our Online Doctor service please login here.";
 
             Assert.That(loginPage.GetLogOffMessage().Contains(logOffMessage)); }
 

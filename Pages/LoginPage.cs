@@ -11,11 +11,11 @@ namespace BDD_Specflow_Webdriver.Pages
 {
     public class LoginPage : BasePage
     {
-        By loginusername = By.Id("username");
-        By loginpassword = By.Id("password");
-        By loginsubmitbutton = By.Id("submit");
+        By loginusername = By.Name("logonId");
+        By loginpassword = By.Name("logonPassword");
+        By loginsubmitbutton = By.CssSelector("input.btnAction']");
         By successMessageLocator = By.CssSelector(".flash.success");
-        By failureMessageLocator = By.CssSelector(".flash.error");
+        By failureMessageLocator = By.CssSelector(".errorMsg");
         By logOffMessage = By.CssSelector(".message");
 
 
@@ -39,6 +39,8 @@ namespace BDD_Specflow_Webdriver.Pages
             Type(password, loginpassword);
         }
 
+        
+
         public void Submit()
         {
             Click(loginsubmitbutton);
@@ -49,9 +51,13 @@ namespace BDD_Specflow_Webdriver.Pages
             Assert.True(IsDisplayed(successMessageLocator));
         }
 
-        public void FailureMessagePresent()
+        public string FailureMessagePresent()
         {
-            Assert.True(IsDisplayed(failureMessageLocator));
+            if (IsDisplayed(failureMessageLocator))
+            {
+                return GetText(failureMessageLocator);
+            }
+            return "Not found";
         }
 
         internal string GetLogOffMessage()

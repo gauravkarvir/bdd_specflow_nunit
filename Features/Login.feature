@@ -10,7 +10,7 @@
 Scenario Outline: Navigate and Login to Home Page
 	Given I navigate to Login Page
 	When I enter login details for <userType>
-    #Then i can see the validation error message
+    Then i can see the validation error message
 
 	Examples:
 	| userType |
