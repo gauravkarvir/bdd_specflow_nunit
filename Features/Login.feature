@@ -13,9 +13,9 @@ Scenario Outline: Navigate and Login to Home Page
     Then i can see the validation error message
 
 	Examples:
-	| userType |
-	| invalidAdmin    |
-	| invalidUser     |
+	| userType     |
+	| invalidAdmin |
+	| invalidUser             |
 
 	
 	

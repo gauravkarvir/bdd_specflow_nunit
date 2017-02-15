@@ -35,7 +35,7 @@ namespace BDD_Specflow_Webdriver.Step_Definitions
         [Then(@"i can see the validation error message")]
         public void ThenICanSeeTheValidationErrorMessage()
         {
-            var invalidUserMessage = "Either username or password entered is incorrect. Please check your details and try again";
+            var invalidUserMessage = "The password field cannot be empty.";
             Assert.That(loginPage.FailureMessagePresent().Contains(invalidUserMessage));
         }
 

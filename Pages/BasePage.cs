@@ -13,7 +13,9 @@ using System.Configuration;
 using BDD_Specflow_Webdriver.Data;
 using Ganss.Excel;
 using BDD_Specflow_Webdriver.framework;
+
 using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace BDD_Specflow_Webdriver.Pages
 {
@@ -79,6 +81,31 @@ namespace BDD_Specflow_Webdriver.Pages
             wait.Until(ExpectedConditions.ElementIsVisible(locator));
             return driver.FindElement(locator);
         }
+
+        public IWebElement WaitForElement(By locator)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(VisibilityOfElementLocated(locator));
+            return driver.FindElement(locator);
+        }
+
+        private Func<IWebDriver, bool> VisibilityOfElementLocated(By by)
+        {
+            return driver =>
+            {
+                try
+                {
+                    Thread.Sleep(500);
+                }
+                catch (ThreadInterruptedException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                IWebElement element = Find(by);
+                return element.Displayed ;
+            };
+        }
+
 
         public void VerifyPage(string pageTitle)
         {
@@ -308,6 +335,16 @@ namespace BDD_Specflow_Webdriver.Pages
             var mainMenu = Find(menuLocator);
             builder.MoveToElement(mainMenu).Build().Perform();
             mainMenu.Click();
+        }
+
+
+        public void ClickAction(By locator)
+        {   
+            Actions actions = new Actions(driver);
+
+            actions.Click(Find(locator)).Perform();
+
+
         }
     }
 }

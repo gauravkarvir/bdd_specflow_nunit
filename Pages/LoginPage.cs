@@ -1,6 +1,7 @@
 ﻿using BDD_Specflow_Webdriver.Data;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace BDD_Specflow_Webdriver.Pages
     {
         By loginusername = By.Name("logonId");
         By loginpassword = By.Name("logonPassword");
-        By loginsubmitbutton = By.CssSelector("input.btnAction']");
+        By loginsubmitbutton = By.CssSelector("#pageLoginForm input.btnAction[name=signIn]");
         By successMessageLocator = By.CssSelector(".flash.success");
         By failureMessageLocator = By.CssSelector(".errorMsg");
         By logOffMessage = By.CssSelector(".message");
@@ -29,7 +30,7 @@ namespace BDD_Specflow_Webdriver.Pages
         {
             Type(userData.Username, loginusername);
             Type(userData.Password, loginpassword);
-            Click(loginsubmitbutton);
+            WaitForElement(loginsubmitbutton);
 
         }
 
@@ -43,7 +44,8 @@ namespace BDD_Specflow_Webdriver.Pages
 
         public void Submit()
         {
-            Click(loginsubmitbutton);
+
+            ClickAction(loginsubmitbutton);
         }
 
         public void SuccessMessagePresent()
